@@ -39,9 +39,9 @@ inventory AS (
         product_name AS inventory_product_name,
         opname_stock
     FROM `kimia_farma.kf_inventory`
-)
-
- SELECT 
+), 
+gabung AS (
+SELECT 
     t.transaction_id,
     t.date,
     b.branch_id,
@@ -67,3 +67,5 @@ LEFT JOIN inventory i
     ON t.branch_id = i.branch_id 
    AND t.product_id = i.product_id
    
+)
+ SELECT DISTINCT * FROM gabung
